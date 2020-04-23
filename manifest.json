@@ -1,0 +1,20 @@
+{
+    "name": "Paella Button Remover",
+    "version": "1.0",
+    "description": "Removes the unmistakably large play button of the opencast paella web player.",
+    "manifest_version": 2,
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "permissions": [
+        "declarativeContent",
+        "tabs",
+        "activeTab"
+    ],
+    "page_action": {
+        "default_title": "Remove play button!"
+    }
+}
