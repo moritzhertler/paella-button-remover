@@ -4,19 +4,27 @@ chrome.runtime.onInstalled.addListener(function() {
 
     // activate the extension on sites with the paella play button on it
 
-    let condition = new chrome.declarativeContent.PageStateMatcher({
+    let condition1 = new chrome.declarativeContent.PageStateMatcher({
         css: [
             // id of the play button
-            "#paella_plugin_PlayButtonOnScreen"
+            "#paella_plugin_PlayButtonOnScreen",
+        ],
+    });
+
+    let condition2 = new chrome.declarativeContent.PageStateMatcher({
+        css: [
+            // class of the play button 
+            ".play-button-on-screen"
         ],
     });
 
     let rule = {
-        conditions: [condition],
+        conditions: [condition1, condition2],
         actions: [new chrome.declarativeContent.ShowPageAction()]
     };
 
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+        console.log('Found player');
         chrome.declarativeContent.onPageChanged.addRules(
             [rule]
         );
