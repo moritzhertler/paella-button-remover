@@ -24,6 +24,7 @@ chrome.runtime.onInstalled.addListener(function() {
 
     // inject the script that removes the play butten when user clicks ob the page action 
     chrome.pageAction.onClicked.addListener(function (tab) {
+        console.log('Inject script');
         chrome.tabs.executeScript(tab.ib, {
             file: 'inject.js'
         });
